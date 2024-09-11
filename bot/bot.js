@@ -4,6 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { MessageEmbed } = require("discord.js");
 
+// väljer allt jag vill ha med ifrån discord
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,

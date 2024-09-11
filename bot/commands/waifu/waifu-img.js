@@ -5,6 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("waifu-img")
     .setDescription("Replies to you with an image")
+    // lägger till valet som ska med till api'n
     .addStringOption((option) =>
       option
         .setName("tag")
@@ -43,6 +44,7 @@ module.exports = {
     let info;
     const file = interaction.options.getString("tag");
 
+    // hämtar json filen ifrån api'n och sparar den
     await fetch(`https://api.waifu.pics/sfw/${file}`)
       .then((response) => response.json())
       .then((data) => {
@@ -50,6 +52,7 @@ module.exports = {
         console.log(info);
       });
 
+    // skaper en embed och lägger in infon jag ser nödvändig
     const pictureEmbed = new EmbedBuilder()
       .setColor("#0099ff")
       .setTitle("file")

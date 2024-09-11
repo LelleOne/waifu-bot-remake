@@ -1,3 +1,4 @@
+// detta var ändast för ett test så jag skulle kunna lära mig hur commands funkar
 const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {

@@ -4,6 +4,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("ani-find")
     .setDescription("Find An Anime With Api")
+    // lägger till där man får bilden
     .addAttachmentOption((option) =>
       option
         .setName("image")
@@ -16,10 +17,12 @@ module.exports = {
 
     const file = interaction.options.getAttachment("image");
 
+    // sätter så att det finns en fail safe bild även ifall det tekniskt sätt inte skall gå
     const media = file.attachment
       ? file.url
       : "https://images.plurk.com/32B15UXxymfSMwKGTObY5e.jpg";
 
+    // kollar bara hur många gånger api'n har använts så dett finn sen limit på detta
     await fetch("https://api.trace.moe/me")
       .then((e) => e.json())
       .then((data) => {
@@ -36,6 +39,7 @@ module.exports = {
         results = data;
       });
 
+    // kollar ifall den engelska titeln och den japanska titeln är samma då jag inte vill repetera den ifall dem e det
     if (
       results &&
       results.result.length > 0 &&
